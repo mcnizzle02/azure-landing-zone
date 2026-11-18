@@ -15,45 +15,45 @@ Why this project: every requirement maps to an AZ-900 objective, and the build d
 Project overview
 One resource group, two policies, one PowerShell function, one alert: small enough to rebuild in an evening once you know it.
 Environment
-Item	Value
-Subscription	Pay-As-You-Go (same subscription as the cloud resume)
-Resource group	rg-webmonitor-dev
-Region	(fill in)
-Budget	(fill in amount) per month, alerts at 50% / 80% / 100% actual + forecast
-Function language	PowerShell
-Repo	https://github.com/mcnizzle02/azure-landing-zone
-Notes	OneNote, one page per task
+Item Value
+Subscription Pay-As-You-Go (same subscription as the cloud resume)
+Resource group rg-webmonitor-dev
+Region (fill in)
+Budget (fill in amount) per month, alerts at 50% / 80% / 100% actual + forecast
+Function language PowerShell
+Repo <https://github.com/mcnizzle02/azure-landing-zone>
+Notes OneNote, one page per task
 AZ-900 domain mapping
-Exam domain	Weight	Covered by tasks
-Cloud concepts	25–30%	T05, T06, T09 (IaaS vs PaaS vs serverless, shared responsibility, consumption pricing)
-Azure architecture and services	35–40%	T04, T06, T09, T10 (Entra ID, RBAC, compute, networking, storage)
-Azure management and governance	30–35%	T01–T03, T07, T08, T11 (cost, tags, Policy, locks, monitoring, IaC tools)
+Exam domain Weight Covered by tasks
+Cloud concepts 25–30% T05, T06, T09 (IaaS vs PaaS vs serverless, shared responsibility, consumption pricing)
+Azure architecture and services 35–40% T04, T06, T09, T10 (Entra ID, RBAC, compute, networking, storage)
+Azure management and governance 30–35% T01–T03, T07, T08, T11 (cost, tags, Policy, locks, monitoring, IaC tools)
 Naming conventions (type-purpose-environment)
-Resource	Prefix	Example
-Resource group	rg-	rg-webmonitor-dev
-Function App	func-	func-webmonitor-dev
-Storage account	st (no dashes, lowercase)	stwebmonitordev
-Application Insights	appi-	appi-webmonitor-dev
-Log Analytics workspace	log-	log-webmonitor-dev
-Virtual network	vnet-	vnet-webmonitor-dev
-Network security group	nsg-	nsg-web-dev
+Resource Prefix Example
+Resource group rg- rg-webmonitor-dev
+Function App func- func-webmonitor-dev
+Storage account st (no dashes, lowercase) stwebmonitordev
+Application Insights appi- appi-webmonitor-dev
+Log Analytics workspace log- log-webmonitor-dev
+Virtual network vnet- vnet-webmonitor-dev
+Network security group nsg- nsg-web-dev
 Tags on every resource: env: dev, owner: lee, project: webmonitor
 Screenshot scheme: one folder per task (P04-T03), files named P04-T03-01-policy-assignment.png, numbered in the order taken. Take the screenshot before moving to the next step, so notes never fall behind.
 Tasks
 Twelve tasks, taken one at a time; T01 and T02 are done and T03 (Azure Policy) is next.
-Task	Title	Status	Completed
-T01	Budget and cost alerts	Done	2026-11-16
-T02	Resource group and tags	Done	2026-11-16
-T03	Azure Policy guardrails + PowerShell tests	In progress	 
-T04	Identity and RBAC (least privilege)	Not started	 
-T05	Write the PowerShell function locally	Not started	 
-T06	Deploy the Function App	Not started	 
-T07	App settings and configuration	Not started	 
-T08	Monitoring and alerting	Not started	 
-T09	Networking basics (VNet, subnets, NSG)	Not started	 
-T10	Storage tiers and redundancy	Not started	 
-T11	Infrastructure as code: tear down and redeploy	Not started	 
-T12	Practice assessment and review	Not started	 
+Task Title Status Completed
+T01 Budget and cost alerts Done 2026-11-16
+T02 Resource group and tags Done 2026-11-16
+T03 Azure Policy guardrails + PowerShell tests Done 2026-11-17  
+T04 Identity and RBAC (least privilege) In Progress  
+T05 Write the PowerShell function locally Not started  
+T06 Deploy the Function App Not started  
+T07 App settings and configuration Not started  
+T08 Monitoring and alerting Not started  
+T09 Networking basics (VNet, subnets, NSG) Not started  
+T10 Storage tiers and redundancy Not started  
+T11 Infrastructure as code: tear down and redeploy Not started  
+T12 Practice assessment and review Not started  
 Each task below uses the same template: Objective, Steps, Verify, Exam tie-in, Screenshots, Notes / issues. Fill in Notes as you go: what broke, the error text, and how you fixed it.
 T01 – Budget and cost alerts
 Objective: get warned before spend reaches the monthly limit.
@@ -142,15 +142,16 @@ Notes / issues:
 Wrap-up
 Fill these in as you go; they become your final review sheet before the exam.
 Lessons learned
+
 1. The old web monitor was lost because the Free Trial subscription was disabled after 30 days. Lesson: know your subscription type and keep everything in code and a repo.
 Exam review notes (one line per “aha” moment)
 1. Budgets alert; they don’t stop spending.
 PowerShell cmdlets learned
-Cmdlet	What it does	Task
-Get-AzContext	Shows the current account and subscription	T03
-Get-AzResourceGroup	Lists a resource group and its tags	T02
-New-AzStorageAccount	Creates a storage account	T03
-Remove-AzStorageAccount	Deletes a storage account	T03
+Cmdlet What it does Task
+Get-AzContext Shows the current account and subscription T03
+Get-AzResourceGroup Lists a resource group and its tags T02
+New-AzStorageAccount Creates a storage account T03
+Remove-AzStorageAccount Deletes a storage account T03
 Cleanup checklist (when the project is finished)
 1. ☐ Decide what stays running (the monitor) and what goes (VNets, test storage, test user)
 1. ☐ Remove the RG lock before deleting anything
